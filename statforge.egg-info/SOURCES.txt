@@ -1,5 +1,7 @@
 README.md
 pyproject.toml
+statforge/__init__.py
+statforge/__main__.py
 statforge.egg-info/PKG-INFO
 statforge.egg-info/SOURCES.txt
 statforge.egg-info/dependency_links.txt
