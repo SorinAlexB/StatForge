@@ -46,6 +46,6 @@ test  = "pytest"
 all   = [{ref="fmt"}, {ref="lint"}, {ref="check"}, {ref="test"}]
 
 [project.scripts]
-# running `StatForge will run the `StatForge.main` function
-StatForge = "StatForge.main:main"
+# running `statforge` will run the `statforge.__main__.main` function
+statforge = "statforge.__main__:main"
 
