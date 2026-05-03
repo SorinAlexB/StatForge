@@ -4,9 +4,47 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "matplotlib>=3.10.9",
+    "numpy>=2.4.4",
+    "pandas>=3.0.2",
+    "pydantic>=2.13.3",
+]
 
 [dependency-groups]
 dev = [
     "numpy>=2.4.4",
+    "pyright>=1.1.409",
+    "pytest>=9.0.3",
+    "ruff>=0.15.12",
 ]
+
+[tool.uv]
+# tell uv we're building a package
+# (i.e. something we can distribute for others to use)
+package = true
+
+[tool.ruff]
+target-version = "py313" #python version
+line-length = 120
+
+[tool.ruff.lint]
+select = ["A", "E", "F", "I", "N", "T100"] # rules, or "ALL" for all rules activated
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+strict = ["**/*.py"]
+pythonVersion = "3.13"
+
+[tool.poe.tasks]
+fmt   = "ruff format"
+lint  = "ruff check --fix"
+check = "pyright"
+test  = "pytest"
+all   = [{ref="fmt"}, {ref="lint"}, {ref="check"}, {ref="test"}]
+
+[project.scripts]
+# running `StatForge will run the `StatForge.main` function
+StatForge = "StatForge.main:main"
+

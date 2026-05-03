@@ -1,0 +1,27 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"          # triggers when pushing a tag
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # permission to create a github release
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.5.14"
+
+      - run: uv sync --frozen --no-dev
+
+      - run: uv build
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*     # attach the files to the new release on github

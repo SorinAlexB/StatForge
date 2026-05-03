@@ -1,0 +1,19 @@
+name: pr
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.5.14"
+      - run: uv sync --all-extras --dev
+      - run: uv run poe fmt
+      - run: uv run poe lint
+      - run: uv run poe check
+      - run: uv run poe test

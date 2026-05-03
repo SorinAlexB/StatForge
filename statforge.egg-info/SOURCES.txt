@@ -1,0 +1,8 @@
+README.md
+pyproject.toml
+statforge.egg-info/PKG-INFO
+statforge.egg-info/SOURCES.txt
+statforge.egg-info/dependency_links.txt
+statforge.egg-info/entry_points.txt
+statforge.egg-info/requires.txt
+statforge.egg-info/top_level.txt
